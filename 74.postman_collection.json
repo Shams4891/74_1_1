@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "ff6aae8c-2782-4157-869a-2eb4cfb17e6e",
+		"name": "74",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FFME_74_Company_admin_should_be_able_to_update_user_information Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb5503b6-5d5d-4314-a342-a66399eef348",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"var jsondata= JSON.parse(responseBody)\r",
+							"var schema = {\r",
+							"    \"$schema\": \"http://json-schema.org/draft-07/schema\",\r",
+							"    \"$id\": \"http://example.com/example.json\",\r",
+							"    \"type\": \"object\",\r",
+							"    \"title\": \"The root schema\",\r",
+							"    \"description\": \"The root schema comprises the entire JSON document.\",\r",
+							"    \"default\": {},\r",
+							"    \"examples\": [\r",
+							"        {\r",
+							"            \"status\": true,\r",
+							"            \"statusCode\": 201,\r",
+							"            \"message\": \"User Updated Successfully\"\r",
+							"        }\r",
+							"    ],\r",
+							"    \"required\": [\r",
+							"        \"status\",\r",
+							"        \"statusCode\",\r",
+							"        \"message\"\r",
+							"    ],\r",
+							"    \"properties\": {\r",
+							"        \"status\": {\r",
+							"            \"$id\": \"#/properties/status\",\r",
+							"            \"type\": \"boolean\",\r",
+							"            \"title\": \"The status schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": false,\r",
+							"            \"examples\": [\r",
+							"                true\r",
+							"            ]\r",
+							"        },\r",
+							"        \"statusCode\": {\r",
+							"            \"$id\": \"#/properties/statusCode\",\r",
+							"            \"type\": \"integer\",\r",
+							"            \"title\": \"The statusCode schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": 0,\r",
+							"            \"examples\": [\r",
+							"                201\r",
+							"            ]\r",
+							"        },\r",
+							"        \"message\": {\r",
+							"            \"$id\": \"#/properties/message\",\r",
+							"            \"type\": \"string\",\r",
+							"            \"title\": \"The message schema\",\r",
+							"            \"description\": \"An explanation about the purpose of this instance.\",\r",
+							"            \"default\": \"\",\r",
+							"            \"examples\": [\r",
+							"                \"User Updated Successfully\"\r",
+							"            ]\r",
+							"        }\r",
+							"    },\r",
+							"    \"additionalProperties\": true\r",
+							"}\r",
+							"\r",
+							"var data1 = [true, false];\r",
+							"var data2 = [true, 123];\r",
+							"\r",
+							"pm.test('Schema is valid', function () {\r",
+							"    \r",
+							"    pm.expect(tv4.validate(jsondata, schema)).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDY1OTE2NTAsImlhdCI6MTYwNjU4ODA1MCwic3ViIjo5NzIsInVzZXJfdHlwZSI6IkRhc2hib2FyZCIsIm5hbWUiOiJmaXJzdCBsYXN0dXNlciIsImVtYWlsIjoic2hhbXM2ajZAZ21haWwuY29tIiwibWVtYmVyX3R5cGUiOjIsImNvbXBhbnlfaWQiOjEwOTMsImRlc2lnbmF0aW9uIjpudWxsLCJkZXBhcnRtZW50IjpudWxsfQ.qcMurAhnke-EQA8LY8xgvNpMKPVfSbD_CoDCZ6ZAlQk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"first_name\":\"Shahms\",\r\n\"last_name\":\"Tashvir\",\r\n\"department\":\"TECH\",\r\n\"designation\":\"software developer\",\r\n\"email\":\"yaa@gmail.com\",\r\n\"nid\":\"45856456887445787\",\r\n\"profile_photo\":\"https://previews.123rf.com/images/gmast3r/gmast3r1411/gmast3r141100280/33645487-profile-icon-male-avatar-portrait-casual-person.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URLMgt}} /api/v1/field-force/users/admin/user/update/{{User_Id}}",
+					"host": [
+						"{{URLMgt}} "
+					],
+					"path": [
+						"api",
+						"v1",
+						"field-force",
+						"users",
+						"admin",
+						"user",
+						"update",
+						"{{User_Id}}"
+					]
+				},
+				"description": "\r\n\r\nObjective: As a company admin, I want to update the user so that they can view their updated profile info.\r\n\r\n\r\nSE: Shiblu Ahmad\r\nPO: Pranto Majumder\r\nQA: Shams Md Tasvir\r\nReviewer: Pranto Majumder.\r\n\r\nMethod: PUT\r\n\r\nBody :\r\n\r\n{\r\n\"first_name\":\"Karim\",\r\n\"last_name\":\"Benzema\",\r\n\"department\":\"TECH\",\r\n\"designation\":\"software developer\",\r\n\"email\":\"a@gmail.com\",\r\n\"nid\":\"45856456887445788\",\r\n\"profile_photo\":\"https://previews.123rf.com/images/gmast3r/gmast3r1411/gmast3r141100280/33645487-profile-icon-male-avatar-portrait-casual-person.jpg\"\r\n}\r\n\r\nExpected Result:\r\n{\r\n    \"status\": true,\r\n    \"statusCode\": 201,\r\n    \"message\": \"User Updated Successfully\"\r\n}\r\nActual Result:\r\n\r\n{\r\n    \"status\": true,\r\n    \"statusCode\": 201,\r\n    \"message\": \"User Updated Successfully\"\r\n}\r\nStatus Code: 200  OK.\r\nTest Result: Pass\r\n"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
